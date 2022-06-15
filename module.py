@@ -6,9 +6,10 @@
 # Copyright (c) 2022 Jason Appiatu, All rights reserved
 
 # Libraries
-from machine import Pin, ADC
+from machine import Pin, ADC, SPI
 import time
 import os
+
 
 # General filename to save the gas readings
 fileName = 'module'
@@ -58,3 +59,4 @@ while True: # Looping forever until a break is found
         # Writing the values of the sensors to the file
         module.write('\n') # Creating a breakline in the file after every write
     time.sleep(1)
+

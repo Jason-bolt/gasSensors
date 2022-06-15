@@ -24,7 +24,7 @@ storageSpi = SPI(2, baudrate=100000, polarity=1, phase=0, sck=Pin(D5), mosi=Pin(
 sd = sdcard.SDCard(storageSpi, Pin(D1))
 vfs = os.VfsFat(sd) # Creating a virtual storage
 # Check if sd card is already mounted
-os.mount(vfs, "/sd")
+# os.mount(vfs, "/sd")
 try:
     os.mount(vfs, "/sd")
 except OSError:

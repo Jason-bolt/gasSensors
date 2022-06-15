@@ -13,7 +13,8 @@ import time
 from CCS811 import CCS811
 import sdcard
 import os
-from sht3x import SHT3X
+# from sht3x import SHT3X
+from sht_library import SHT3X
 
 # General filename to save the gas readings
 fileName = 'gasData'
@@ -123,9 +124,9 @@ def calcWind():
 try:
     print("starting...")
     with open(file, 'a') as gasDataFile: # Opening the file in appending mode (it could also be open as writable)
-        gasDataFile.write("eCO2, TVOC, CO, NH3, NO2, Hydrogen(MQ5), Methane(MQ4), Humidity, Temperature, Wind speed") # Writing the types of gases as well as temperature and humidity as headings in the file
+        gasDataFile.write("eCO2, TVOC, CO, NH3, NO2, Hydrogen(MQ5), Methane(MQ4), Humidity, Temperature, Wind speed, O2") # Writing the types of gases as well as temperature and humidity as headings in the file
         gasDataFile.write("\n") # Writing a new line in the file
-        print("eCO2, TVOC, CO, NH3, NO2, Hydrogen(MQ5), Methane(MQ4), Humidity, Temperature, Wind speed") # Displaying what was written to the file
+        print("eCO2, TVOC, CO, NH3, NO2, Hydrogen(MQ5), Methane(MQ4), Humidity, Temperature, Wind speed, O2") # Displaying what was written to the file
     
     while True: # Looping forever until a break is found
         try: # This works with the except statement to catch any errors that may come up
@@ -147,14 +148,14 @@ try:
                     windSpeed = calcWind()
                     
                     # Printing the values of the sensors to the console
-#                     print("{}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}".format(co2Value, tvocValue, coValue, nh3Value, no2Value, hydrogenValue, methaneValue, temp, humid, windSpeed, o2Value))
-                    print("{}, {}, {}, {}, {}, {}, {}, {}, {}, {}".format(co2Value, tvocValue, coValue, nh3Value, no2Value, hydrogenValue, methaneValue, temp, humid, windSpeed))
+                    print("{}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}".format(co2Value, tvocValue, coValue, nh3Value, no2Value, hydrogenValue, methaneValue, temp, humid, windSpeed, o2Value))
+#                     print("{}, {}, {}, {}, {}, {}, {}, {}, {}, {}".format(co2Value, tvocValue, coValue, nh3Value, no2Value, hydrogenValue, methaneValue, temp, humid, windSpeed))
                     
 #                     values = str(co2Value)+','+str(tvocValue)+','+str(coValue)+','+str(nh3Value)+','+str(no2Value)+','+str(hydrogenValue)+','+str(methaneValue)+','+str(temp)+','+str(humid)+','+str(windSpeed)+','+str(o2Value)
                     
                     # Writing the values of the sensors to the file    
-#                     gasDataFile.write("{}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}".format(co2Value, tvocValue, coValue, nh3Value, no2Value, hydrogenValue, methaneValue, temp, humid, windSpeed, o2Value))
-                    gasDataFile.write("{}, {}, {}, {}, {}, {}, {}, {}, {}, {}".format(co2Value, tvocValue, coValue, nh3Value, no2Value, hydrogenValue, methaneValue, temp, humid, windSpeed))
+                    gasDataFile.write("{}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}".format(co2Value, tvocValue, coValue, nh3Value, no2Value, hydrogenValue, methaneValue, temp, humid, windSpeed, o2Value))
+#                     gasDataFile.write("{}, {}, {}, {}, {}, {}, {}, {}, {}, {}".format(co2Value, tvocValue, coValue, nh3Value, no2Value, hydrogenValue, methaneValue, temp, humid, windSpeed))
                     
             #         CJMCU-6814
 #                     coValue = mapValue(co.read(), 0, 4095, 1, 1000)

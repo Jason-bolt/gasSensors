@@ -13,7 +13,8 @@ import time
 from CCS811 import CCS811
 import sdcard
 import os
-from sht3x import SHT3X
+# from sht3x import SHT3X
+from sht_library import SHT3X
 
 
 # Initializing SDCard
